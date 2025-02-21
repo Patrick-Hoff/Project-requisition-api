@@ -1,0 +1,18 @@
+header {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    border-bottom: 1px solid white;
+    user-select: none;
+}
+
+a {
+    color: antiquewhite;
+    list-style: none;
+    text-decoration: none;
+    cursor: pointer;
+}
