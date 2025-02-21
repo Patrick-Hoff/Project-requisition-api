@@ -3,6 +3,7 @@ import Card from "../../components/CardClima/Index";
 import './style.css';
 
 function Clima() {
+    cosnt [erro, setErro] = useState(false)
     const [dadosClima, setDadosClima] = useState(null);
     const [password] = useState('b1b15e88fa797225412429c1c50c122a1');
     const [city, getCity] = useState('')
@@ -13,15 +14,23 @@ function Clima() {
         fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${useCity}&appid=${password}`)
             .then(dados => dados.json())
             .then(dados => {
-                console.log(dados);
+                if (dados.cod === "404") {
+                    setErro(true)
+                    setDadosClima(null)
+                } else {
                 setDadosClima(dados); // Armazenando os dados no estado
+                setErro(false)
+                }
             })
-            .catch(error => console.error('Erro ao buscar dados: ', error));
-    }, [password]);
+            .catch((error) => {
+                alert('Local lão localizado')
+            });
+    }, [useCity, password]);
 
     function form(e) {
         e.preventDefault();
         getUseCity(city);
+        console.log(city)
     }
 
     return (

@@ -3,9 +3,9 @@ import './style.css'
 function CardClima({ img, previsao, local, change, form, val }) {
     return (
         <div className="cardClima">
-            <form action={form}>
+            <form onSubmit={form}>
                 <input type='text' onChange={change} placeholder='Digite o nome da Cidade' value={val} />
-                <input type='submit' onChange='Pesquisar' />
+                <input type='submit'  />
             </form>
 
             <img src={img} alt="" />
