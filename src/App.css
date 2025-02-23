@@ -8,4 +8,5 @@
 .app {
   height: 100vh;
   background: #373737;
+  overflow: hidden;
 }
