@@ -24,6 +24,8 @@ function Clima() {
                 if (dados.cod === "404") {
                     setErro(true)
                     setDadosClima(null)
+                } else if (getUseCity == '') {
+                    setErro(true)
                 } else {
                     setDadosClima(dados); // Armazenando os dados no estado
                     setErro(false)
@@ -39,23 +41,25 @@ function Clima() {
 
     function form(e) {
         e.preventDefault();
+        if (city.trim() === '') {
+            setErro(true);
+            return; // Não envia a requisição se o campo estiver vazio
+        } else {
+            setErro(false)
+        }
         getUseCity(city);
     }
 
-    function noReflesh(e) {
-        e.preventDefault();
-        getUseCity(city);
-    }
 
     return (
         <div className="containerClima">
             {erro ? (
-                <Card 
+                <Card
                     previsao='Local não encontrado'
                     form={form}
                     change={(e) => getCity(e.target.value)}
-                    submitForm={noReflesh}
-                    />
+                    submitForm={form}
+                />
             ) : dadosClima ? (
                 <Card
                     img={`https://openweathermap.org/img/wn/${dadosClima.list[0].weather[0].icon}@2x.png`} // Exemplo de como pegar o ícone
@@ -63,10 +67,10 @@ function Clima() {
                     local={dadosClima.city.name} // Nome da cidade
                     form={form}
                     change={(e) => getCity(e.target.value)}
-                    temperatura={Math.trunc(atual)- 273}
+                    temperatura={Math.trunc(atual) - 273}
                     temperaturamin={Math.trunc(useMin) - 273}
                     temperaturamax={Math.trunc(useMax) - 273}
-                    submitForm={noReflesh}
+                    submitForm={form}
                 />
             ) : (
                 <Loader /> // Exibindo uma mensagem enquanto os dados não são carregados
