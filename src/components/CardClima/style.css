@@ -13,6 +13,7 @@
   align-items: center;
   justify-content: space-around;
   color: white;
+  user-select: none;
 }
 
 .cardClima h3 h4 {
@@ -31,8 +32,34 @@
 }
 
 .temperatura span {
-  display: flex;
+  display: flex; 
   flex-direction: column;
   text-align: center;
   font-size: 1.2rem;
+}
+
+.inputText {
+  width: 80%;
+  height: 39px;
+  border: 1px solid white;
+  border-radius: 30px;
+  background: #444;
+  text-align: center;
+  color: white;
+}
+
+.inputText::placeholder {
+  color: white;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.btnInput {
+  cursor: pointer;
 }

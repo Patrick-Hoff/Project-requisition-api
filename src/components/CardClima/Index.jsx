@@ -1,11 +1,13 @@
+import { FaSearch } from "react-icons/fa";
+
 import './style.css'
 
-function CardClima({ img, previsao, local, change, form, val, temperaturamin, temperatura, temperaturamax }) {
+function CardClima({ img, previsao, local, change, form, val, temperaturamin, temperatura, temperaturamax, submitForm }) {
     return (
         <div className="cardClima">
-            <form onSubmit={form}>
-                <input type='text' onChange={change} placeholder='Digite o nome da Cidade' value={val} />
-                <input type='submit'  />
+            <form onSubmit={submitForm}>
+                <input type='text' onChange={change} placeholder='Digite o nome da Cidade' value={val} className='inputText' />
+                <FaSearch onClick={form} className='btnInput' />
             </form>
 
             <img src={img} alt="" />
@@ -20,7 +22,7 @@ function CardClima({ img, previsao, local, change, form, val, temperaturamin, te
                 </span>
                 <span>
                     <span>
-                    Min
+                        Min
                     </span>
                     {temperaturamin}ºC
                 </span>

@@ -40,7 +40,11 @@ function Clima() {
     function form(e) {
         e.preventDefault();
         getUseCity(city);
-        console.log(city)
+    }
+
+    function noReflesh(e) {
+        e.preventDefault();
+        getUseCity(city);
     }
 
     return (
@@ -50,6 +54,7 @@ function Clima() {
                     previsao='Local não encontrado'
                     form={form}
                     change={(e) => getCity(e.target.value)}
+                    submitForm={noReflesh}
                     />
             ) : dadosClima ? (
                 <Card
@@ -61,6 +66,7 @@ function Clima() {
                     temperatura={Math.trunc(atual)- 273}
                     temperaturamin={Math.trunc(useMin) - 273}
                     temperaturamax={Math.trunc(useMax) - 273}
+                    submitForm={noReflesh}
                 />
             ) : (
                 <Loader /> // Exibindo uma mensagem enquanto os dados não são carregados
