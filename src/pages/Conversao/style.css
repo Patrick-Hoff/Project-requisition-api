@@ -1,0 +1,4 @@
+.containerConversao {
+    display: flex;
+    flex-direction: column;
+}

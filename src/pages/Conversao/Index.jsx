@@ -1,7 +1,11 @@
+import Card from '../../components/CardConversao/Index'
+
+import './style.css'
+
 function Conversao() {
     return (
-        <div>
-            <h2>Conversão de Moeda</h2>
+        <div className='container containerConversao'>
+            <Card />
         </div>
     )
 }
